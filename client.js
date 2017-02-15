@@ -1,56 +1,49 @@
-//Use only with jQuery
+
 $(document).ready(function() {
+  var colors = ["red", "green", "yellow", "blue"];
+  var currentColor = "";
 
-//adds four buttons later to the BOM
-  for (var i = 0; i < 4; i++) {
-    var newButton = $('<button></button>');
-    $('div').append(newButton);
-    newButton.text('color');  //text in button
-    newButton.data('idNumber', i);
-    var color = ['red', 'green', 'yellow', 'blue'];
+  generateBlocks();
+  randomColorPicker();
 
-//adds buttons to the DOM
-    $('body').append(newButton);
-}
+//button click function
+  $("#blockContainer").on("click", "#colorBlocks", function() {
+    if($(this).data('color') == currentColor) {
+      $("#tryAgainMessage").text("Success! Huge High Five!!!");
+//how do you clear "#tryAgainMessage" if alert is used when correct?
+      //alert("Success! Huge High Five!!!");
+      randomColorPicker();
+    } else {
+//Changes the <h3> on index.html
+      $("#tryAgainMessage").text("Try Again!");
+    }
+  });
 
-//Button click function
-    $('button').on('click', function(){
-        //console.log($(this).data());
-        console.log($(this).data().idNumber + ' button was clicked!');
+//picks random color based from randomNumber() that was in the discription of the homework
+  function randomColorPicker() {
+  //When values for randomNumber(1, colors.length) only 2 colors are being picked, why?
+//sets value to open string in the $(document).ready(function()
+      currentColor = colors[randomNumber(0, colors.length-1)];
+    }
 
+//Generates Blocks to <div>
+  function generateBlocks() {
+    for(var i = 0; i < colors.length; i++) {
+  //can't figure out how to append to multiple <div>'s
+  //decides to go with one <div> and append a new <div> to it
+  //not sure if this is right or best?
+//gives blocks an ID for css
+      $("#blockContainer").append('<h1 id="colorBlocks"></h1>');
+      var block = $("#blockContainer").children().last();
+      (block).css('background-color', colors[i]);
+      (block).data('color', colors[i]);
+    }
+  }
+});
 
-//function random generates - example code
-  function randomNumber(min, max){
+//randomNumber for randomColor
+//function was from the discription of the homework
+//OK to be in global scope?
+function randomNumber(min, max){
     return Math.floor(Math.random() * (1 + max - min) + min);
 }
-    if (color == i){
-    prompt('success! Pick another block randomly');
-  } else {
-    prompt('try again');
-}
-
-});
-});
-
-// $(document).ready(function() {
-//   for (var i = 0; i < 10; i++) {  //for loop adds 10 buttons to the DOM
-//     var newButton = $('<button></button>');  // when creating must use <> brackets
-//     newButton.text('Click Me! I am a button');  //adds text to the button
-//     newButton.data('idNumber', i);  //stores info without displaying it - IDs are common but not displayed on the screen
-//                                     // 'idNumber' is the key and 1 is the value
-//                                     // i refers to the specific button number pressed
-//     newButton.data('cool secret', 'kris has big ears');  //line creates a new property value to the object
-//     $('body').append(newButton);  //creates a button
-//     }
-//
-// $('button').on('click', function(){
-//     console.log($(this).data()); // info stored but not shown
-//     console.log($(this).data().idNumber + ' button was clicked!');
-//     console.log()
-//
-//   });
-// });
-
-//.css( propertyName, value )
-
-//use jquery .css to change colors

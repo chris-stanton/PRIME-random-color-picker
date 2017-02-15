@@ -1,0 +1,12 @@
+
+h3 {
+  text-align: center;
+  font-size: 35px;
+}
+
+#colorBlocks {
+  width: 200px;
+  height: 200px;
+  margin: 15px;
+  float: left;
+}

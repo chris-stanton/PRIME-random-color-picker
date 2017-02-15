@@ -1,7 +1,6 @@
 Color Block Picker
 
-
-Description:
+Description
 jQuery Color Block Picker
 You will be creating a little 'pick the block' game with HTML, CSS, and jQuery!
 
@@ -12,10 +11,12 @@ Prompt the player to pick one of the color blocks you created at random.
 Here is a handy function to generate a random number given a minimum and maximum.
 
 
-Code needed:
+
+
 function randomNumber(min, max){
     return Math.floor(Math.random() * (1 + max - min) + min);
 }
+
 
 
 
