@@ -3,14 +3,13 @@ $(document).ready(function() {
   var colors = ["red", "green", "yellow", "blue"];
 
 //button click function
-  $("#blockContainer").on("click", "#colorBlocks", function() {
-    if($(this).data('color') == currentColor) {
-      $("#tryAgainMessage").text("Success! Huge High Five!!!");
-    //how do you clear "#tryAgainMessage" if alert is used when correct?
+  $("#container").on("click", "#colorBlocks", function() {
+    if($(this).data('pigment') == currentColor) {
+      $("#message").text("Success! Huge High Five!!!");
       randomColor();
     } else {
 //Changes the <h3> on index.html
-      $("#tryAgainMessage").text("Try Again!");
+      $("#message").text("Try Again!");
     }
   });
 //picks random color based from randomNumber() that was in the discription of the homework
@@ -24,10 +23,10 @@ $(document).ready(function() {
   function makeBlocks() {
     for(var i = 0; i < colors.length; i++) {
 //gives blocks an ID for css and creates the blocks on the DOM
-      $("#blockContainer").append('<h1 id="colorBlocks"></h1>');
-      var block = $("#blockContainer").children().last();
+      $("#container").append('<h1 id="colorBlocks"></h1>');
+      var block = $("#container").children().last();
+      (block).data('pigment', colors[i]);
       (block).css('background-color', colors[i]);
-      (block).data('color', colors[i]);
     }
   }
   makeBlocks();
